@@ -7,6 +7,8 @@ the script should be run inside of its own directory, to ensure that it doesn't 
 
 when first run, the script will prompt the user to enter their Gemini API key and Gmail app password. these credentials will then be serialized into JSON and stored in a file named "credentials.json." directions for creating these two essential elements are provided in the script itself. **never** use your own personal email address for the bot. due to this being a bot script, there's always a nonzero chance that google will notice and ban you.
 
+#### WARNING: the way this bot stores your API keys and application passwords *during runtime* is *NOT SECURE.* it caches them in environment variables, meaning that a malicious program can snipe them from right under your nose while the program is running. if this doesn't concern you, run it at your own risk. running the bot inside of an internet-enabled virtual machine (VirtualBox loaded with fedora workstation or something similar) for an added layer of sandboxing and security is what i would recommend.
+
 # Usage
 once credentials.json exists, the script will run normally. you'll be prompted for your partner's name and their responsibility in the project. you'll then be asked to tell it how aggressive the message should be and how long the message should be. finally, you'll have to enter your partner's email address. once you've done all of this, the rest is automatic. the script will contact Gemini and prompt it for a message to your partner, and, once it gets a response, it will open a connection to Gmail's SMTP API and attempt to send this message to your partner. if all goes well, your partner will recieve the email within five minutes of the script sending it.
 
